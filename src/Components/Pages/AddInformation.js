@@ -8,16 +8,16 @@ const AddInformation = () => {
         const email = e.target.email.value
         const section = e.target.section.value;
         const roll = e.target.roll.value;
-        const user = { name, email, section, roll};
+        const student = { name, email, section, roll};
         
         
         
-        fetch(`https://thawing-gorge-51396.herokuapp.com/auth/register`, {
+        fetch(`http://localhost:5000/students`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(user),
+            body: JSON.stringify(student),
 
         })
             .then(response => response.json())
@@ -25,7 +25,7 @@ const AddInformation = () => {
 
                 if (data.acknowledged) {
                     console.log(data)
-                    toast.success('Please Login with your email and pass')
+                    toast.success('Add student information')
                    
                     e.target.reset()
                 }
