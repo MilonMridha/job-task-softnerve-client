@@ -12,7 +12,7 @@ const AddInformation = () => {
         
         
         
-        fetch(`http://localhost:5000/students`, {
+        fetch(`https://secret-sea-15721.herokuapp.com/students`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

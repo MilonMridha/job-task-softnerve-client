@@ -1,17 +1,17 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import StudentRow from './StudentRow';
-
+import { Link } from "react-router-dom";
 const GetStudents = () => {
 
-    const { data: students, refetch } = useQuery('students', () => fetch('http://localhost:5000/students', {
+    const { data: students, refetch } = useQuery('students', () => fetch('https://secret-sea-15721.herokuapp.com/students', {
         method: 'GET'
     }).then(res => res.json()))
 
     console.log(students)
     return (
-        <div>
-        <h1 className='text-xl font-semibold mt-5'>Get All Students: {students?.length}</h1>
+        <div className='mt-10'>
+        <h1 className='text-xl font-semibold'>All Students: {students?.length}</h1>
         <div className='flex justify-end px-10'>
         
         </div>
@@ -26,7 +26,7 @@ const GetStudents = () => {
                         <th>Section</th>
                         <th>Roll</th>
                         <th>ID</th>
-                        <th>Detail with Id</th>
+                        <th>Update with Id</th>
                         
                         <th>Delete</th>
 
@@ -47,9 +47,13 @@ const GetStudents = () => {
 
                 </tbody>
             </table>
+
+           
         </div>
         
-
+        <div className='mt-20'>
+        <Link className="text-white bg-purple-900 mt-20 hover:bg-purple-500 focus:ring-4 focus:outline-none  font-medium text-sm w-full sm:w-auto px-5 py-5 text-center " to="/add"> Post Information</Link>
+        </div>
     </div>
     );
 };
